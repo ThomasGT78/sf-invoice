@@ -37,7 +37,7 @@ class Invoice
     private $client;
 
     /**
-     * @ORM\OneToMany(targetEntity=InvoiceItem::class, mappedBy="invoice")
+     * @ORM\OneToMany(targetEntity=InvoiceItem::class, mappedBy="invoice", cascade={"persist", "remove"})
      */
     private $items;
 
@@ -115,5 +115,13 @@ class Invoice
         }
 
         return $this;
+    }
+
+    public function getTotalBeforeTax(){
+        $total = 0;
+        foreach ($this->items as $item){
+            $total = $item->getTotalBeforeTax();
+        }
+        return $total;
     }
 }

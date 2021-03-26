@@ -31,12 +31,17 @@ class InvoiceItem
     /**
      * @ORM\Column(type="integer")
      */
-    private $taxRate;
+    private $taxRate = 20;
 
     /**
      * @ORM\ManyToOne(targetEntity=Invoice::class, inversedBy="items")
      */
     private $invoice;
+
+    /**
+     * @ORM\Column(type="integer", options={"default": 1})
+     */
+    private $qt = 1;
 
     public function getId(): ?int
     {
@@ -89,5 +94,21 @@ class InvoiceItem
         $this->invoice = $invoice;
 
         return $this;
+    }
+
+    public function getQt(): ?int
+    {
+        return $this->qt;
+    }
+
+    public function setQt(int $qt): self
+    {
+        $this->qt = $qt;
+
+        return $this;
+    }
+
+    public function getTotalBeforeTax(){
+        return $this->qt * $this->amountBeforeTaxes;
     }
 }

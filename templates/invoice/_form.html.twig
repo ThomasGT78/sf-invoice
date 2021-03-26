@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+    {{ form_row(form.invoiceDate) }}
+    {{ form_row(form.invoiceNumber) }}
+    {{ form_row(form.client) }}
+    <div>
+        <h3>Lignes de facture</h3>
+        <div class="text-right">
+            <button type="button" id="btAddItem" class="btn btn-primary">
+                Ajouter une ligne de facture
+            </button>
+        </div>
+
+        {{ form_widget(form.items) }}
+    </div>
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+
+<script>
+    const $btAddItem = $("#btAddItem");
+    const $itemContainer = $("#invoice_items");
+
+    const template = $itemContainer.data("prototype");
+
+    $btAddItem.on("click", function(){
+        const $itemNumber = $itemContainer.children().length;
+        var html = template.replaceAll("__name__label__", `Ligne ${$itemNumber +1}`);
+        html = html.replaceAll("__name__", $itemNumber);
+        $itemContainer.append(html);
+    })
+</script>

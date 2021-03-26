@@ -1,0 +1,9 @@
+.nav_row{
+    display: flex;
+    list-style: none;
+}
+.nav_li{
+    display: table;
+    border: solid 1px black;
+    margin-right: 15px;
+}
