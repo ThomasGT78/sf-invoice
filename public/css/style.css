@@ -6,4 +6,9 @@
     display: table;
     border: solid 1px black;
     margin-right: 15px;
+    padding: 3px;
+}
+
+.nav_li a{
+    padding: 3px;
 }

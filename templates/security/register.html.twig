@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(userForm) }}
+        {{ form_row(userForm.email) }}
+        {{ form_row(userForm.password) }}
+
+        <button typer="submit" class="btn btn-primary">Envoyer</button>
+    {{ form_end(userForm) }}
+{% endblock %}
+
+
+{% block title %}
+
+{% endblock %}
+

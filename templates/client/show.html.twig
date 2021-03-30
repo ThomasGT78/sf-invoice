@@ -19,21 +19,23 @@
                 <th>Reference</th>
                 <td>{{ client.reference }}</td>
             </tr>
-            <tr colspan="2">
-                <th>Adresse</th>
-            </tr>
-            <tr>
-                <th>Rue</th>
-                <td>{{ client.address.street }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ client.address.city }}</td>
-            </tr>
-            <tr>
-                <th>Code Postal</th>
-                <td>{{ client.address.zipCode }}</td>
-            </tr>
+            {% if client.address %}
+                <tr colspan="2">
+                    <th>Adresse</th>
+                </tr>
+                <tr>
+                    <th>Rue</th>
+                    <td>{{ client.address.street }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ client.address.city }}</td>
+                </tr>
+                <tr>
+                    <th>Code Postal</th>
+                    <td>{{ client.address.zipCode }}</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 
